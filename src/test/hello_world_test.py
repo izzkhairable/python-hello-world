@@ -1,5 +1,5 @@
 import unittest
-from hello_world import hello_world  # Replace 'your_module' with the actual module name
+from src.hello_world.hello_world import hello_world
 
 
 class TestHelloWorld(unittest.TestCase):

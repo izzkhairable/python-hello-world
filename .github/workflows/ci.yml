@@ -32,7 +32,7 @@ jobs:
 
       - name: Test with Unittest
         run: |
-          python hello_world_test.py
+          python -m unittest src.test.hello_world_test
         continue-on-error: true
 
       - name: Run python program

@@ -1,4 +1,4 @@
-from hello_world import hello_world
+from src.hello_world.hello_world import hello_world
 
 
 def main():
