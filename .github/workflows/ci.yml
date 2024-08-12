@@ -70,13 +70,14 @@ jobs:
           build-args: |
             BASE_DOCKER_IMAGE=${{ matrix.python-version }}
 
+      - name: Scan for vulnerabilities
+        uses: crazy-max/ghaction-container-scan@v3
+        with:
+          image: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
+
       - name: Run docker image
         uses: addnab/docker-run-action@v3
         with:
           image: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
           run: python main.py
 
-      - name: Scan for vulnerabilities
-        uses: crazy-max/ghaction-container-scan@v3
-        with:
-          image: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
