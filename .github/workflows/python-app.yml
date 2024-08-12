@@ -67,3 +67,5 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
           labels: ${{ steps.meta.outputs.labels }}-${{ matrix.python-version }}
+          build-args: |
+            BASE_DOCKER_IMAGE=${{ matrix.python-version }}

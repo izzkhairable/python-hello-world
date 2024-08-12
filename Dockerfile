@@ -1,4 +1,5 @@
-FROM python:latest
+ARG BASE_IMAGE_VERSION=latest
+FROM python:${BASE_IMAGE_VERSION}
 
 WORKDIR /app
 
