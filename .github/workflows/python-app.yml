@@ -73,4 +73,4 @@ jobs:
       - name: Scan for vulnerabilities
         uses: crazy-max/ghaction-container-scan@v3
         with:
-          image: izzkhair/python-hello-world:${{ steps.meta.outputs.labels }}-${{ matrix.python-version }}
+          image: izzkhair/python-hello-world:${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
