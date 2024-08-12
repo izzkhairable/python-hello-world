@@ -1,9 +1,4 @@
 import unittest
-from unittest.mock import patch
-from io import StringIO
-from inspirational_quotes import quote
-from pyfiglet import Figlet
-from wonderwords import RandomSentence
 from hello_world import hello_world  # Replace 'your_module' with the actual module name
 
 
