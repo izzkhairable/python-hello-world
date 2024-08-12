@@ -62,6 +62,8 @@ docker run python-hello-world-local
 
 ## GitHub Actions
 
+GitHub Action, Worflows and Jobs: [izzkhairable/python-hello-world/actions](https://github.com/izzkhairable/python-hello-world/actions)
+
 Currently,the GitHub Actions for this project is configured with a workflow `Build and publish python hello-world` and it
 contains two jobs: 
 
@@ -91,11 +93,37 @@ jobs:
       - Run docker image
 ```
 
+## Dependencies
+
+### Python Packages
+
+```yaml
+inspirational-quotes
+pyfiglet
+wonderwords
+ruff
+```
+
+### GitHub Actions
+
+```yaml
+actions/checkout
+actions/setup-python
+actions/upload-artifact
+actions/download-artifact
+docker/login-action
+docker/metadata-action
+docker/build-push-action
+crazy-max/ghaction-container-scan
+addnab/docker-run-action
+```
 
 ## Contributing
 
-If you'd like to contribute, please fork the repository or open an issue and use a feature branch.
+If you'd like to contribute, please fork the repository, create a PR or open an issue.
 
 ## Useful Links
 
+* https://github.com/izzkhairable/python-hello-world/actions
+* https://hub.docker.com/repository/docker/izzkhair/python-hello-world/general
 
