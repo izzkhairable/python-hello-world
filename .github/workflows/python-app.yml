@@ -74,6 +74,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
+          run: python main.py
 
       - name: Scan for vulnerabilities
         uses: crazy-max/ghaction-container-scan@v3
