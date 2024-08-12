@@ -86,4 +86,3 @@ jobs:
         with:
           image: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
           run: python main.py
-

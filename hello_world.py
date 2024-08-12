@@ -2,6 +2,7 @@ from inspirational_quotes import quote
 from pyfiglet import Figlet
 from wonderwords import RandomSentence
 
+
 def hello_world():
     f = Figlet(font='slant')
     print(f.renderText('Hello World'))
