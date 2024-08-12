@@ -12,10 +12,9 @@ class TestHelloWorld(unittest.TestCase):
         raised = False
         try:
             hello_world()
-        except:
+        except (RuntimeError, TypeError, NameError):
             raised = True
         self.assertFalse(raised, 'hello_world() function raised an exception')
-
 
 if __name__ == '__main__':
     unittest.main()
