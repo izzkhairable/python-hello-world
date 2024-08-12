@@ -1,6 +1,6 @@
 # Python `Hello world` Program
 
-![example workflow](https://github.com/izzkhairable/python-hello-world/actions/workflows/ci.yml/badge.svg)
+![example workflow](https://github.com/izzkhairable/python-hello-world/actions/workflows/ci.yml/badge.svg?branch=main)
 
 ## Getting Started
 
@@ -56,6 +56,6 @@ docker run python-hello-world-local
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+If you'd like to contribute, please fork the repository or open an issue and use a feature branch.
 
-Please make sure to update tests as appropriate.
+
