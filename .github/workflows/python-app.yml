@@ -30,5 +30,5 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: python-hello-world-artifacts
+          name: python-hello-world-artifacts-${{ matrix.python-version }}
           path: .
