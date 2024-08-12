@@ -10,6 +10,8 @@
 
 ### Running in Local Machine
 
+![img-001](assets/img-001.gif)
+
 #### Install Requirements
 
 ```shell
@@ -29,6 +31,8 @@ python -m unittest src.test.hello_world_test
 ```
 
 ### Running in Docker 
+
+![img-002](assets/img-002.gif)
 
 Published Docker Images on Docker Hub: [izzkhair/python-hello-world](https://hub.docker.com/repository/docker/izzkhair/python-hello-world/general)
 
@@ -50,8 +54,9 @@ docker pull izzkhair/python-hello-world:main-3.9
 #### Run container using pulled images in Local Machine
 
 ```shell
+docker pull izzkhair/python-hello-world:main-3.12
 PYTHON_VERSION=3.12
-docker run izzkhair/python-hello-world:main-$PYTHON_VERSION python main.py
+docker run izzkhair/python-hello-world:main-$PYTHON_VERSION
 ```
 
 #### Optional: Build image and Run container in Local Machine
@@ -62,7 +67,7 @@ docker run python-hello-world-local
 
 ## GitHub Actions
 
-GitHub Action, Worflows and Jobs: [izzkhairable/python-hello-world/actions](https://github.com/izzkhairable/python-hello-world/actions)
+View GitHub Action, Workflows and Jobs: [izzkhairable/python-hello-world/actions](https://github.com/izzkhairable/python-hello-world/actions)
 
 Currently,the GitHub Actions for this project is configured with a workflow `Build and publish python hello-world` and it
 contains two jobs: 
