@@ -24,6 +24,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - uses: ricardochaves/python-lint@v1.4.0
+
       - name: Run python program
         run: |
           python main.py
