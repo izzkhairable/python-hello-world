@@ -41,7 +41,7 @@ jobs:
       - name: Download packaged python artifacts
         uses: actions/download-artifact@v4
         with:
-          name: python-hello-world-artifacts-3.12
+          name: python-hello-world-artifacts-${{ matrix.python-version }}
 
       - name: Log in to Docker Hub
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
