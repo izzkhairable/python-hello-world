@@ -1,6 +1,6 @@
 # Python `Hello world` Program
 
-![example workflow](https://github.com/izzkhairable/python-hello-world/blob/main/.github/workflows/ci.yml/badge.svg)
+![example workflow](https://github.com/izzkhairable/python-hello-world/actions/workflows/ci.yml/badge.svg)
 
 ## Getting Started
 
