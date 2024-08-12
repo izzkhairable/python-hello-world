@@ -36,6 +36,8 @@ follow python versions:
 
 > Python version of `Hello world` images available: **3.12, 3.11, 3.10, 3.9**
 
+
+
 #### Pull the published images from Docker Hub
 
 ```shell
@@ -57,6 +59,38 @@ docker run izzkhair/python-hello-world:main-$PYTHON_VERSION python main.py
 docker build --build-arg BASE_IMAGE_VERSION=3.12 -t python-hello-world-local .
 docker run python-hello-world-local
 ```
+
+## GitHub Actions
+
+Currently,the GitHub Actions for this project is configured with a workflow `Build and publish python hello-world` and it
+contains two jobs: 
+
+- `python-build`: test, lint, build artifacts, run `hello world` program and upload the artifacts
+- `docker-publish`: builds and publish `hello world` image to docker hub, scans for vulnerability and run the image
+
+```yaml
+name: Build and publish python hello-world
+jobs:
+  python-build:
+    steps:
+      - Checkout to current branch
+      - Set up Python X.YZ
+      - Display Python version
+      - Install dependencies
+      - Lint with Ruff
+      - Test with Unittest
+      - Run python program
+      - Upload packaged python artifacts
+  docker-publish:
+    steps:
+      - Download packaged python artifacts
+      - Authenticate to docker hub
+      - Extract tags and labels metadata
+      - Build and publish docker image
+      - Scan container for vulnerabilities
+      - Run docker image
+```
+
 
 ## Contributing
 
