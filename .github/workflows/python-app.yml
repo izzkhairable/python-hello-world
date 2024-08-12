@@ -64,5 +64,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ matrix.python-version }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
+          labels: ${{ steps.meta.outputs.labels }}-${{ matrix.python-version }}
