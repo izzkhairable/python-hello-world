@@ -7,9 +7,10 @@ class TestHelloWorld(unittest.TestCase):
         raised = False
         try:
             hello_world()
-        except (RuntimeError, TypeError, NameError):
+        except (RuntimeError, TypeError, NameError, ImportError):
             raised = True
         self.assertFalse(raised, 'hello_world() function raised an exception')
+
 
 if __name__ == '__main__':
     unittest.main()
