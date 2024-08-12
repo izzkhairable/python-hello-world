@@ -27,3 +27,8 @@ jobs:
       - name: Run python program
         run: |
           python main.py
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: python-hello-world-artifacts
+          path: app/
