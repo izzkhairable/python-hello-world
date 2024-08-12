@@ -34,7 +34,7 @@ python -m unittest src.test.hello_world_test
 
 ![img-002](assets/img-002.gif)
 
-Published Docker Images on Docker Hub: [izzkhair/python-hello-world](https://hub.docker.com/repository/docker/izzkhair/python-hello-world/general)
+#### View the published Docker Images on Docker Hub: [izzkhair/python-hello-world](https://hub.docker.com/repository/docker/izzkhair/python-hello-world/general)
 
 To ensure that the `Hello world` program is `backward compatible`, each new increment of the 
 `Hello world` python program would result in the publishing of 4 docker images for the 
@@ -67,9 +67,14 @@ docker run python-hello-world-local
 
 ## GitHub Actions
 
-View GitHub Action, Workflows and Jobs: [izzkhairable/python-hello-world/actions](https://github.com/izzkhairable/python-hello-world/actions)
+![img-005](assets/img-005.png)
+![img-003](assets/img-003.png)
+![img-004](assets/img-004.png)
 
-Currently,the GitHub Actions for this project is configured with a workflow `Build and publish python hello-world` and it
+
+#### View the GitHub Action Workflows and Jobs: [izzkhairable/python-hello-world/actions](https://github.com/izzkhairable/python-hello-world/actions)
+
+Currently, the GitHub Actions for this project is configured with a workflow `Build and publish python hello-world` and it
 contains two jobs: 
 
 - `python-build`: test, lint, build artifacts, run `hello world` program and upload the artifacts
