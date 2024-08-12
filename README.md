@@ -1,5 +1,7 @@
 # Python `Hello world` Program
 
+![example workflow](https://github.com/izzkhairable/python-hello-world/blob/main/.github/workflows/ci.yml/badge.svg)
+
 ## Getting Started
 
 ### Running in Local Machine
@@ -52,7 +54,8 @@ docker build --build-arg BASE_IMAGE_VERSION=3.12 -t python-hello-world-local .
 docker run python-hello-world-local
 ```
 
-## Contribution
+## Contributing
 
-### GitHub Actions
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+Please make sure to update tests as appropriate.
