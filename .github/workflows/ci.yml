@@ -3,7 +3,6 @@ name: Build and publish python hello-world
 on: [push]
 
 jobs:
-
   python-build:
     runs-on: ubuntu-latest
     strategy:
@@ -39,9 +38,9 @@ jobs:
 
       - name: Run python program
         run: |
-          echo "----- RUN 1 --------"
+          echo "-------- RUN 1 --------"
           python main.py
-          echo "----- RUN 2 --------"
+          echo "-------- RUN 2 --------"
           python main.py
 
       - name: Upload packaged python artifacts

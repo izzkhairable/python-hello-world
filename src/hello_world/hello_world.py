@@ -9,7 +9,7 @@ def hello_world():
     print(f.renderText('Hello World'))
 
     #  Print out a plain Hello World
-    print(f"Here is the plain:\nHello World\n")
+    print("Here is the plain:\nHello World\n")
 
     # Print out a random quote
     q = quote()
