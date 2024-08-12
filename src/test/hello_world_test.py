@@ -1,9 +1,14 @@
 import unittest
+import warnings
 from src.hello_world.hello_world import hello_world
 
 
 class TestHelloWorld(unittest.TestCase):
-    def test_hello_world_specific_values(self):
+    def setUp(self):
+        warnings.simplefilter('ignore', category=ResourceWarning)
+
+    # TODO: Implement a further fine-grained test-case
+    def test_hello_world(self):
         raised = False
         try:
             hello_world()
