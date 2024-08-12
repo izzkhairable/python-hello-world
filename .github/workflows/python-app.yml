@@ -69,3 +69,8 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}-${{ matrix.python-version }}
           build-args: |
             BASE_DOCKER_IMAGE=${{ matrix.python-version }}
+
+      - name: Scan for vulnerabilities
+        uses: crazy-max/ghaction-container-scan@v3
+        with:
+          image: izzkhair/python-hello-world:${{ steps.meta.outputs.labels }}-${{ matrix.python-version }}
