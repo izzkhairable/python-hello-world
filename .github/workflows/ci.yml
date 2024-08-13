@@ -86,7 +86,7 @@ jobs:
           push: false
           tags: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
           labels: ${{ steps.meta.outputs.labels }}-${{ matrix.python-version }}
-          outputs: type=docker,dest=/tmp/image.tar
+          outputs: type=local,dest=/tmp/image.tar
           build-args: |
             BASE_DOCKER_IMAGE=${{ matrix.python-version }}
 
