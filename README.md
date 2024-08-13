@@ -105,13 +105,13 @@ jobs:
   docker-publish:
     steps:
       - Download packaged python artifacts
-      - Extract tags and labels metadata
       - Authenticate to docker hub
-      - Authenticate to Github CR
+      - Authenticate to github container registry
+      - Extract tags and labels metadata
       - Build docker image
       - Scan container for vulnerabilities
       - Run docker image
-      - Publish to Github CR and Docker Hub
+      - Publish to github container registry and docker hub
 ```
 
 ## Dependencies
