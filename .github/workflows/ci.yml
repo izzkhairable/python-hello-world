@@ -93,6 +93,7 @@ jobs:
         uses: crazy-max/ghaction-container-scan@v3
         with:
           image: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
+          severity_threshold: HIGH
 
       - name: Run docker image
         uses: addnab/docker-run-action@v3
