@@ -9,11 +9,6 @@ env:
 jobs:
   python-build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-      attestations: write
-    id-token: write
     strategy:
       matrix:
         python-version: ${{ fromJSON(vars.PYTHON_VERSIONS) }}
@@ -60,6 +55,11 @@ jobs:
 
   docker-publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
     needs:
       - python-build
     strategy:
