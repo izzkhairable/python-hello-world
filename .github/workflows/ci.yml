@@ -93,7 +93,6 @@ jobs:
       - name: Scan container for vulnerabilities
         uses: crazy-max/ghaction-container-scan@v3
         with:
-          image: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
           tarball: /tmp/image.tar
 
       - name: Run docker image
