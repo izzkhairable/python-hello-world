@@ -27,13 +27,13 @@ jobs:
 
       - name: Lint with Ruff
         run: |
-          pip install ruff
           ruff check
         continue-on-error: true
 
-      - name: Test with Unittest
+      - name: Test with Coverage Unittest
         run: |
-          python -m unittest src.test.hello_world_test
+          coverage run -m unittest discover -p '*_test.py'
+          coverage report -m --omit="*_test.py"
         continue-on-error: true
 
       - name: Run python program
