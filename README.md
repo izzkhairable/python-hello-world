@@ -107,12 +107,11 @@ jobs:
       - Download packaged python artifacts
       - Extract tags and labels metadata
       - Build and publish docker image
+      - Authenticate to docker hub
+      - Authenticate to Github CR
       - Scan container for vulnerabilities
       - Run docker image
-      - Authenticate to docker hub
-      - Publish to Docker Hub
-      - Authenticate to Github CR
-      - Publish to Github CR
+      - Publish to Github CR and Docker Hub
 ```
 
 ## Dependencies
