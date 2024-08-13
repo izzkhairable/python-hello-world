@@ -2,12 +2,15 @@ name: Build and publish python hello-world
 
 on: [push]
 
+env:
+  FILEPATH_PYTHON_MAIN: "src/main.py"
+
 jobs:
   python-build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12"]
+        python-version: ${{ fromJSON(vars.PYTHON_VERSIONS) }}
     steps:
       - name: Checkout to current branch
         uses: actions/checkout@v4
@@ -39,9 +42,9 @@ jobs:
       - name: Run python program
         run: |
           echo "-------- RUN 1 --------"
-          python src/main.py
+          python $FILEPATH_PYTHON_MAIN
           echo "-------- RUN 2 --------"
-          python src/main.py
+          python $FILEPATH_PYTHON_MAIN
 
       - name: Upload packaged python artifacts
         uses: actions/upload-artifact@v4
@@ -55,7 +58,7 @@ jobs:
       - python-build
     strategy:
       matrix:
-        python-version: [ "3.9", "3.10", "3.11", "3.12" ]
+        python-version: ${{ fromJSON(vars.PYTHON_VERSIONS) }}
     steps:
       - name: Download packaged python artifacts
         uses: actions/download-artifact@v4
@@ -95,4 +98,4 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
-          run: python main.py
+          run: python $FILEPATH_PYTHON_MAIN
