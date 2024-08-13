@@ -52,6 +52,11 @@ docker pull izzkhair/python-hello-world:main-3.10
 docker pull izzkhair/python-hello-world:main-3.9
 ```
 
+```shell
+docker pull ghcr.io/izzkhair/python-hello-world:main-3.9
+docker inspect ghcr.io/izzkhair/python-hello-world
+```
+
 #### Run container using pulled images in Local Machine
 
 ```shell
@@ -91,17 +96,20 @@ jobs:
       - Display Python version
       - Install dependencies
       - Lint with Ruff
-      - Test with Unittest
+      - Test with Coverage Unittest
       - Run python program
       - Upload packaged python artifacts
   docker-publish:
     steps:
       - Download packaged python artifacts
-      - Authenticate to docker hub
       - Extract tags and labels metadata
       - Build and publish docker image
       - Scan container for vulnerabilities
       - Run docker image
+      - Authenticate to docker hub
+      - Publish to Docker Hub
+      - Authenticate to Github CR
+      - Publish to Github CR
 ```
 
 ## Dependencies
