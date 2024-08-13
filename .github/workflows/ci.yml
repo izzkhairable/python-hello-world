@@ -100,7 +100,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Push docker image
+      - name: Push docker image to docker hub
         id: push
         uses: docker/build-push-action@v6
         with:
