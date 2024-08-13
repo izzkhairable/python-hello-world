@@ -21,13 +21,14 @@ pip install -r requirements.txt
 #### Running the `Hello world` program
 
 ```shell
-python main.py
+python src/main.py
 ```
 
 #### Running Test Cases
 
 ```shell
-python -m unittest src.test.hello_world_test
+coverage run -m unittest discover -p '*_test.py'
+coverage report -m --omit="*_test.py"
 ```
 
 ### Running in Docker 
@@ -61,7 +62,7 @@ docker run izzkhair/python-hello-world:main-$PYTHON_VERSION
 
 #### Optional: Build image and Run container in Local Machine
 ```shell
-docker build --build-arg BASE_IMAGE_VERSION=3.12 -t python-hello-world-local .
+docker build --no-cache --build-arg BASE_IMAGE_VERSION=3.12 -t python-hello-world-local .
 docker run python-hello-world-local
 ```
 

@@ -4,17 +4,19 @@ from wonderwords import RandomSentence
 
 
 def hello_world():
-    # Print out ASCII art style Hello World
+    # var string ASCII art style Hello World
     f = Figlet(font='slant')
-    print(f.renderText('Hello World'))
+    styled_hw = f.renderText('Hello World')
 
-    #  Print out a plain Hello World
-    print("Here is the plain:\nHello World\n")
+    # var string Hello World
+    plain_hw = "Here is the plain:\nHello World\n"
 
-    # Print out a random quote
+    # var string random quote
     q = quote()
-    print(f"Here's a random quote:\n{dict(q)['quote']}\n- {dict(q)['author']}\n")
+    random_quote = f"Here's a random quote:\n{dict(q)['quote']}\n- {dict(q)['author']}\n"
 
-    # Print out a random sentence
+    # var string random sentence
     s = RandomSentence()
-    print(f"Here's a random sentence:\n{s.sentence()}")
+    random_sentence = f"Here's a random sentence:\n{s.sentence()}"
+
+    return styled_hw, plain_hw, random_quote, random_sentence
