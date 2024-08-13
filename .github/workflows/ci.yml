@@ -9,6 +9,9 @@ env:
 jobs:
   python-build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     strategy:
       matrix:
         python-version: ${{ fromJSON(vars.PYTHON_VERSIONS) }}
