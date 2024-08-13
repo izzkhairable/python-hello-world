@@ -102,7 +102,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push docker image to docker hub
-        id: push
+        id: push_docker_hub
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -121,7 +121,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push docker image to github cr
-        id: push
+        id: push_github_cr
         uses: docker/build-push-action@v6
         with:
           context: .
