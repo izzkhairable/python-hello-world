@@ -1,12 +1,16 @@
 ARG BASE_IMAGE_VERSION=latest
 FROM python:${BASE_IMAGE_VERSION}
 
-WORKDIR /app
+RUN useradd -m defaultuser -u 1000
 
-COPY requirements.txt ./
+USER defaultuser
 
-RUN pip install -r requirements.txt
+WORKDIR /home/defaultuser/app
 
-COPY ./ /app
+COPY requirements.txt .
 
-CMD [ "python", "main.py" ]
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY ./ .
+
+CMD [ "python", "src/main.py" ]
