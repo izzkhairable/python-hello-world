@@ -83,9 +83,10 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          push: true
+          push: false
           tags: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
           labels: ${{ steps.meta.outputs.labels }}-${{ matrix.python-version }}
+          outputs: type=docker,dest=/tmp/image.tar
           build-args: |
             BASE_DOCKER_IMAGE=${{ matrix.python-version }}
 
@@ -93,6 +94,7 @@ jobs:
         uses: crazy-max/ghaction-container-scan@v3
         with:
           image: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
+          tarball: /tmp/image.tar
 
       - name: Run docker image
         uses: addnab/docker-run-action@v3
