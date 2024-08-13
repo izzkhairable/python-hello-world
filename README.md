@@ -106,9 +106,9 @@ jobs:
     steps:
       - Download packaged python artifacts
       - Extract tags and labels metadata
-      - Build and publish docker image
       - Authenticate to docker hub
       - Authenticate to Github CR
+      - Build docker image
       - Scan container for vulnerabilities
       - Run docker image
       - Publish to Github CR and Docker Hub
