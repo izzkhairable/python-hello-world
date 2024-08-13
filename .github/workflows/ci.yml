@@ -65,12 +65,6 @@ jobs:
         with:
           name: python-hello-world-artifacts-${{ matrix.python-version }}
 
-      - name: Authenticate to docker hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
       - name: Extract tags and labels metadata
         id: meta
         uses: docker/metadata-action@v5
@@ -99,6 +93,12 @@ jobs:
         with:
           image: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
           run: python ${{ env.FILEPATH_PYTHON_MAIN }}
+
+      - name: Authenticate to docker hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push docker image
         id: push
