@@ -39,9 +39,9 @@ jobs:
       - name: Run python program
         run: |
           echo "-------- RUN 1 --------"
-          python main.py
+          python src/main.py
           echo "-------- RUN 2 --------"
-          python main.py
+          python src/main.py
 
       - name: Upload packaged python artifacts
         uses: actions/upload-artifact@v4
