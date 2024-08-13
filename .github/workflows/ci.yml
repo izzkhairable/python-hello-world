@@ -104,11 +104,11 @@ jobs:
 #        with:
 #          image: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
 
-      - name: Run docker image
-        uses: addnab/docker-run-action@v3
-        with:
-          image: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
-          run: python ${{ env.FILEPATH_PYTHON_MAIN }}
+#      - name: Run docker image
+#        uses: addnab/docker-run-action@v3
+#        with:
+#          image: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
+#          run: python ${{ env.FILEPATH_PYTHON_MAIN }}
 
       - name: Push docker image to docker hub and github cr
         id: push
