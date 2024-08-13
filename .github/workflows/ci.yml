@@ -77,8 +77,8 @@ jobs:
         with:
           images: izzkhair/python-hello-world
 
-      - name: Build and publish docker image
-        id: push
+      - name: Build docker image
+        id: build
         uses: docker/build-push-action@v4
         with:
           context: .
@@ -93,6 +93,18 @@ jobs:
         uses: crazy-max/ghaction-container-scan@v3
         with:
           image: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
+
+      - name: Push docker image
+        id: push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
+          labels: ${{ steps.meta.outputs.labels }}-${{ matrix.python-version }}
+          build-args: |
+            BASE_DOCKER_IMAGE=${{ matrix.python-version }}
 
       - name: Run docker image
         uses: addnab/docker-run-action@v3
