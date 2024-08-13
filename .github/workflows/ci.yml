@@ -86,14 +86,13 @@ jobs:
           push: false
           tags: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
           labels: ${{ steps.meta.outputs.labels }}-${{ matrix.python-version }}
-          outputs: type=docker,dest=/tmp/image.tar
           build-args: |
             BASE_DOCKER_IMAGE=${{ matrix.python-version }}
 
       - name: Scan container for vulnerabilities
         uses: crazy-max/ghaction-container-scan@v3
         with:
-          tarball: /tmp/image.tar
+          image: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
 
       - name: Run docker image
         uses: addnab/docker-run-action@v3
