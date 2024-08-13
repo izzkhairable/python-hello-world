@@ -4,15 +4,13 @@ on: [push]
 
 env:
   FILEPATH_PYTHON_MAIN: "src/main.py"
-  PYTHON_VERSIONS: "3.9"
 
 jobs:
   python-build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version:
-          - ${{ env.PYTHON_VERSIONS }}
+        python-version: ${{ vars.PYTHON_VERSIONS }}
     steps:
       - name: Checkout to current branch
         uses: actions/checkout@v4
@@ -60,8 +58,7 @@ jobs:
       - python-build
     strategy:
       matrix:
-        python-version:
-          - ${{ env.PYTHON_VERSIONS }}
+        python-version: ${{ vars.PYTHON_VERSIONS }}
     steps:
       - name: Download packaged python artifacts
         uses: actions/download-artifact@v4
