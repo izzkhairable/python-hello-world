@@ -107,12 +107,12 @@ jobs:
       - name: Scan container for vulnerabilities
         uses: crazy-max/ghaction-container-scan@v3
         with:
-          image: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
+          image: izzkhair/python-hello-world:main-${{ matrix.python-version }}
 
       - name: Run docker image
         uses: addnab/docker-run-action@v3
         with:
-          image: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
+          image: izzkhair/python-hello-world:main-${{ matrix.python-version }}
           run: python ${{ env.FILEPATH_PYTHON_MAIN }}
 
       - name: Push docker image to docker hub and github cr

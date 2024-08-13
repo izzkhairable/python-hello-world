@@ -52,15 +52,18 @@ docker pull izzkhair/python-hello-world:main-3.10
 docker pull izzkhair/python-hello-world:main-3.9
 ```
 
+#### Pull the published images from Github Container Registry
+
 ```shell
-docker pull ghcr.io/izzkhair/python-hello-world:main-3.9
-docker inspect ghcr.io/izzkhair/python-hello-world
+docker pull ghcr.io/izzkhairable/python-hello-world:main-3.12
+docker pull ghcr.io/izzkhairable/python-hello-world:main-3.11
+docker pull ghcr.io/izzkhairable/python-hello-world:main-3.10
+docker pull ghcr.io/izzkhairable/python-hello-world:main-3.9
 ```
 
 #### Run container using pulled images in Local Machine
 
 ```shell
-docker pull izzkhair/python-hello-world:main-3.12
 PYTHON_VERSION=3.12
 docker run izzkhair/python-hello-world:main-$PYTHON_VERSION
 ```
