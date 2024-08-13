@@ -119,3 +119,15 @@ jobs:
           registry: ${{ env.GH_REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push docker image to github cr
+        id: push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
+          labels: ${{ steps.meta.outputs.labels }}-${{ matrix.python-version }}
+          build-args: |
+            BASE_DOCKER_IMAGE=${{ matrix.python-version }}
