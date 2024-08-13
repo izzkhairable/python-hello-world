@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ${{ fromJSON($PYTHON_VERSIONS) }}
+        python-version: ${{ fromJSON(env.PYTHON_VERSIONS) }}
     steps:
       - name: Checkout to current branch
         uses: actions/checkout@v4
@@ -59,7 +59,7 @@ jobs:
       - python-build
     strategy:
       matrix:
-        python-version: ${{ fromJSON($PYTHON_VERSIONS) }}
+        python-version: ${{ fromJSON(env.PYTHON_VERSIONS) }}
     steps:
       - name: Download packaged python artifacts
         uses: actions/download-artifact@v4
