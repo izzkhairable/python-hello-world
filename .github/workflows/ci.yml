@@ -42,6 +42,7 @@ jobs:
 
       - name: Test with Coverage Unittest
         run: |
+          mkdir ${{ matrix.python-version }}
           cat << 'EOF' > ${{ matrix.python-version }}/.coveragerc
           [run]
           relative_files = true
