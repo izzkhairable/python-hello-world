@@ -51,7 +51,7 @@ jobs:
           [run]
           relative_files = true
           EOF
-          coverage --source=.,${{ matrix.python-version }} run --omit="*_test.py" --data-file="${{ matrix.python-version }}/.coverage" -m unittest discover -p '*_test.py'  
+          coverage run --source=.,${{ matrix.python-version }} --omit="*_test.py" --data-file="${{ matrix.python-version }}/.coverage" -m unittest discover -p '*_test.py'  
           coverage report -m --data-file="${{ matrix.python-version }}/.coverage" --omit="*_test.py"
 
         continue-on-error: true
