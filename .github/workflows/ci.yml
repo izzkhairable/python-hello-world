@@ -135,14 +135,22 @@ jobs:
         id: attest-github-cr
         uses: actions/attest-build-provenance@v1
         with:
-          subject-name: ${{ env.GH_REGISTRY }}/${{ env.GH_IMAGE_NAME}}
+          subject-name: ${{ env.GH_REGISTRY }}/${{ env.GH_IMAGE_NAME}}-${{ matrix.python-version }}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: false
 
-      - name: Generate artifact attestation
-        id: attest-docker-hub
-        uses: actions/attest-build-provenance@v1
-        with:
-          subject-name: ${{ env.DH_REGISTRY_IMAGE_NAME }}
-          subject-digest: ${{ steps.push.outputs.digest }}
-          push-to-registry: false
+#      - name: Generate artifact attestation
+#        id: attest-docker-hub
+#        uses: actions/attest-build-provenance@v1
+#        with:
+#          subject-name: ${{ env.DH_REGISTRY_IMAGE_NAME }}
+#          subject-digest: ${{ steps.push.outputs.digest }}
+#          push-to-registry: false
+#
+#      - name: Generate artifact attestation
+#        id: attest-docker-hub
+#        uses: actions/attest-build-provenance@v1
+#        with:
+#          subject-name: ${{ env.DH_REGISTRY_IMAGE_NAME }}
+#          subject-digest: ${{ steps.push.outputs.digest }}
+#          push-to-registry: false
