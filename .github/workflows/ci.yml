@@ -89,6 +89,8 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
+          flavor: |
+            suffix=-${{ matrix.python-version }}
           images: |
               izzkhair/python-hello-world
               ghcr.io/${{ github.repository }}
@@ -100,8 +102,8 @@ jobs:
           context: .
           push: false
           tags: |
-            ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
-          labels: ${{ steps.meta.outputs.labels }}-${{ matrix.python-version }}
+            ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             BASE_DOCKER_IMAGE=${{ matrix.python-version }}
 
@@ -123,8 +125,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ steps.meta.outputs.tags }}-${{ matrix.python-version }}
-          labels: ${{ steps.meta.outputs.labels }}-${{ matrix.python-version }}
+            ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             BASE_DOCKER_IMAGE=${{ matrix.python-version }}
 
