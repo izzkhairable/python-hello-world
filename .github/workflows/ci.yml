@@ -12,10 +12,9 @@ jobs:
   python-build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      packages: write
-      attestations: write
-      id-token: write
+      pull-requests: write
+      contents: write
+      actions: read
     strategy:
       matrix:
         python-version: ${{ fromJSON(vars.PYTHON_VERSIONS) }}
