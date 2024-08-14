@@ -40,7 +40,14 @@ jobs:
         run: |
           coverage run -m unittest discover -p '*_test.py'
           coverage report -m --omit="*_test.py"
+          coverage xml --omit="*_test.py"
         continue-on-error: true
+
+      - name: Get Cover
+        uses: orgoro/coverage@v3.2
+        with:
+          coverageFile: ./coverage.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run python program
         run: |
