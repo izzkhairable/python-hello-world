@@ -2,14 +2,13 @@
 
 [Full report](https://htmlpreview.github.io/?https://github.com/izzkhairable/python-hello-world/blob/python-coverage-comment-action-data/htmlcov/index.html)
 
-| Name                             |    Stmts |     Miss |   Cover |   Missing |
-|--------------------------------- | -------: | -------: | ------: | --------: |
-| src/\_\_init\_\_.py              |        0 |        0 |    100% |           |
-| src/hello\_world/\_\_init\_\_.py |        0 |        0 |    100% |           |
-| src/hello\_world/hello\_world.py |       12 |        0 |    100% |           |
-| src/test/\_\_init\_\_.py         |        0 |        0 |    100% |           |
-| src/test/hello\_world\_test.py   |       15 |        1 |     93% |        19 |
-|                        **TOTAL** |   **27** |    **1** | **96%** |           |
+| Name                             |    Stmts |     Miss |    Cover |   Missing |
+|--------------------------------- | -------: | -------: | -------: | --------: |
+| src/\_\_init\_\_.py              |        0 |        0 |     100% |           |
+| src/hello\_world/\_\_init\_\_.py |        0 |        0 |     100% |           |
+| src/hello\_world/hello\_world.py |       12 |        0 |     100% |           |
+| src/test/\_\_init\_\_.py         |        0 |        0 |     100% |           |
+|                        **TOTAL** |   **12** |    **0** | **100%** |           |
 
 
 ## Setup coverage badge
