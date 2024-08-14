@@ -42,18 +42,8 @@ jobs:
 
       - name: Test with Coverage Unittest
         run: |
-          cat << 'EOF' > .coveragerc
-          [run]
-          relative_files = true
-          EOF
-          mkdir ${{ matrix.python-version }}
-          cat << 'EOF' > ${{ matrix.python-version }}/.coveragerc
-          [run]
-          relative_files = true
-          EOF
-          coverage run --source=.,${{ matrix.python-version }} --omit="*_test.py" --data-file="${{ matrix.python-version }}/.coverage" -m unittest discover -p '*_test.py'  
-          coverage report -m --data-file="${{ matrix.python-version }}/.coverage" --omit="*_test.py"
-
+          coverage run --omit="*_test.py" -m unittest discover -p '*_test.py'  
+          coverage report -m --omit="*_test.py"
         continue-on-error: true
 
       - name: Publish Coverage Report to Summary
@@ -61,7 +51,6 @@ jobs:
         uses: py-cov-action/python-coverage-comment-action@v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COVERAGE_PATH: ${{ matrix.python-version }}/
         continue-on-error: true
 
       - name: Run python program
