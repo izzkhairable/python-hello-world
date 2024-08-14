@@ -133,10 +133,10 @@ jobs:
         run: |
           if [[ -s trivy.txt ]]; then
             {
-              echo "### Security Output"
-              echo "<details><summary>Click to expand</summary>"
+              echo "<h2>Trivy Container Scan Report</h2>"
+              echo "<details><summary>${{ env.DH_REGISTRY_IMAGE_NAME }}-local Image</summary>"
               echo ""
-              echo '```${{ env.DH_REGISTRY_IMAGE_NAME }}-local Scan Report'
+              echo '```'
               cat trivy.txt
               echo '```'
               echo "</details>"
