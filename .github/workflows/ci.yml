@@ -16,15 +16,10 @@ jobs:
       contents: write
       actions: read
     strategy:
+      max-parallel: 1
       matrix:
         python-version: ${{ fromJSON(vars.PYTHON_VERSIONS) }}
     steps:
-      - name: Add seconds of latency
-        shell: bash
-        run: |
-          MINWAIT=1
-          MAXWAIT=30
-          sleep $((MINWAIT+RANDOM % (MAXWAIT-MINWAIT)))
 
       - name: Checkout to current branch
         uses: actions/checkout@v4
@@ -85,15 +80,10 @@ jobs:
     needs:
       - python-build
     strategy:
+      max-parallel: 1
       matrix:
         python-version: ${{ fromJSON(vars.PYTHON_VERSIONS) }}
     steps:
-      - name: Add seconds of latency
-        shell: bash
-        run: |
-          MINWAIT=1
-          MAXWAIT=20
-          sleep $((MINWAIT+RANDOM % (MAXWAIT-MINWAIT)))
 
       - name: Download packaged python artifacts
         uses: actions/download-artifact@v4
