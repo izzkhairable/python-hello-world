@@ -108,9 +108,9 @@ jobs:
         with:
           context: .
           push: false
-          tags: |
-            ${{ env.DH_REGISTRY_IMAGE_NAME }}-test
+          tags: ${{ env.DH_REGISTRY_IMAGE_NAME }}-test
           labels: ${{ steps.meta.outputs.labels }}
+          load: true
           build-args: |
             BASE_DOCKER_IMAGE=${{ matrix.python-version }}
 
