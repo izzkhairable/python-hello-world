@@ -5,7 +5,7 @@ on: [push]
 env:
   FILEPATH_PYTHON_MAIN: "src/main.py"
   GH_REGISTRY: "ghcr.io"
-  IMAGE_NAME: ${{ github.repository }}
+  GH_IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   python-build:
@@ -93,7 +93,7 @@ jobs:
             suffix=-${{ matrix.python-version }}
           images: |
               izzkhair/python-hello-world
-              ghcr.io/${{ github.repository }}
+              ${{ env.GH_REGISTRY }}/${{ env.GH_IMAGE_NAME}}
 
       - name: Build docker image
         id: build
@@ -133,6 +133,6 @@ jobs:
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v1
         with:
-          subject-name: ${{ env.GH_REGISTRY }}/${{ env.IMAGE_NAME}}
+          subject-name: ${{ env.GH_REGISTRY }}/${{ env.GH_IMAGE_NAME}}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
