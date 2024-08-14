@@ -42,7 +42,7 @@ jobs:
 
       - name: Test with Coverage Unittest
         run: |
-          coverage run -m unittest discover -p '*_test.py'
+          coverage run --omit="*_test.py" -m unittest discover -p '*_test.py' 
           coverage report -m --omit="*_test.py"
           coverage xml --omit="*_test.py"
           ls
