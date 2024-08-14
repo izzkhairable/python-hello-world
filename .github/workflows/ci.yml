@@ -19,7 +19,6 @@ jobs:
       matrix:
         python-version: ${{ fromJSON(vars.PYTHON_VERSIONS) }}
     steps:
-
       - name: Add seconds of latency
         shell: bash
         run: |
@@ -89,7 +88,6 @@ jobs:
       matrix:
         python-version: ${{ fromJSON(vars.PYTHON_VERSIONS) }}
     steps:
-
       - name: Add seconds of latency
         shell: bash
         run: |
