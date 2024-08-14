@@ -73,6 +73,12 @@ jobs:
         with:
           name: python-hello-world-artifacts-${{ matrix.python-version }}
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Authenticate to docker hub
         uses: docker/login-action@v3
         with:
@@ -103,7 +109,7 @@ jobs:
           context: .
           push: false
           tags: |
-            ${{ steps.meta.outputs.tags }}
+            ${{ env.DH_REGISTRY_IMAGE_NAME }}-test
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             BASE_DOCKER_IMAGE=${{ matrix.python-version }}
@@ -138,19 +144,3 @@ jobs:
           subject-name: ${{ env.GH_REGISTRY }}/${{ env.GH_IMAGE_NAME}}-${{ matrix.python-version }}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: false
-
-#      - name: Generate artifact attestation
-#        id: attest-docker-hub
-#        uses: actions/attest-build-provenance@v1
-#        with:
-#          subject-name: ${{ env.DH_REGISTRY_IMAGE_NAME }}
-#          subject-digest: ${{ steps.push.outputs.digest }}
-#          push-to-registry: false
-#
-#      - name: Generate artifact attestation
-#        id: attest-docker-hub
-#        uses: actions/attest-build-provenance@v1
-#        with:
-#          subject-name: ${{ env.DH_REGISTRY_IMAGE_NAME }}
-#          subject-digest: ${{ steps.push.outputs.digest }}
-#          push-to-registry: false
