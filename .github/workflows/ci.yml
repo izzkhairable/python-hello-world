@@ -5,6 +5,7 @@ on: [push]
 env:
   FILEPATH_PYTHON_MAIN: "src/main.py"
   GH_REGISTRY: "ghcr.io"
+  IMAGE_NAME: "python-hello-world"
 
 jobs:
   python-build:
@@ -89,7 +90,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-              izzkhair/python-hello-world
+              izzkhair/${{ env.IMAGE_NAME}}
               ghcr.io/${{ github.repository }}
 
       - name: Build docker image
