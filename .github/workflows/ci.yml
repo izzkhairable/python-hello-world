@@ -6,6 +6,7 @@ env:
   FILEPATH_PYTHON_MAIN: "src/main.py"
   GH_REGISTRY: "ghcr.io"
   GH_IMAGE_NAME: ${{ github.repository }}
+  DH_REGISTRY_IMAGE_NAME: "izzkhair/python-hello-world"
 
 jobs:
   python-build:
@@ -92,7 +93,7 @@ jobs:
           flavor: |
             suffix=-${{ matrix.python-version }}
           images: |
-              izzkhair/python-hello-world
+              ${{ env.DH_REGISTRY_IMAGE_NAME }}
               ${{ env.GH_REGISTRY }}/${{ env.GH_IMAGE_NAME}}
 
       - name: Build docker image
@@ -131,6 +132,15 @@ jobs:
             BASE_DOCKER_IMAGE=${{ matrix.python-version }}
 
       - name: Generate artifact attestation
+        id: attest-github-cr
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-name: ${{ env.GH_REGISTRY }}/${{ env.GH_IMAGE_NAME}}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
+
+      - name: Generate artifact attestation
+        id: attest-docker-hub
         uses: actions/attest-build-provenance@v1
         with:
           subject-name: ${{ env.GH_REGISTRY }}/${{ env.GH_IMAGE_NAME}}
