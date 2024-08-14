@@ -102,21 +102,36 @@ jobs:
               ${{ env.DH_REGISTRY_IMAGE_NAME }}
               ${{ env.GH_REGISTRY }}/${{ env.GH_IMAGE_NAME}}
 
-      - name: Build docker image
+      - name: Build local docker image
         id: build
         uses: docker/build-push-action@v6
         with:
           context: .
           push: false
-          tags: ${{ env.DH_REGISTRY_IMAGE_NAME }}-test
+          tags: ${{ env.DH_REGISTRY_IMAGE_NAME }}-local
           labels: ${{ steps.meta.outputs.labels }}
           load: true
           build-args: |
             BASE_DOCKER_IMAGE=${{ matrix.python-version }}
 
-      - name: Run docker image
+      - name: Run local docker image
         run: |
-          docker run --rm ${{ env.DH_REGISTRY_IMAGE_NAME }}-test     
+          docker run --rm ${{ env.DH_REGISTRY_IMAGE_NAME }}-local
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.20.0
+        with:
+          image-ref: ${{ env.DH_REGISTRY_IMAGE_NAME }}-local
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
+#      - name: Scan image
+#        uses: anchore/scan-action@v3
+#        with:
+#          image: "localbuild/testimage:latest"
 
 #      - name: Scan container for vulnerabilities
 #        uses: crazy-max/ghaction-container-scan@v3
