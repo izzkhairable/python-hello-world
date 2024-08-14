@@ -16,7 +16,7 @@ jobs:
       contents: write
       actions: read
     strategy:
-      max-parallel: 1
+      max-parallel: 2
       matrix:
         python-version: ${{ fromJSON(vars.PYTHON_VERSIONS) }}
     steps:
@@ -80,7 +80,7 @@ jobs:
     needs:
       - python-build
     strategy:
-      max-parallel: 1
+      max-parallel: 2
       matrix:
         python-version: ${{ fromJSON(vars.PYTHON_VERSIONS) }}
     steps:
