@@ -26,8 +26,8 @@ jobs:
       - name: Add seconds of latency
         shell: bash
         run: |
-          MINWAIT=1
-          MAXWAIT=20
+          MINWAIT=5
+          MAXWAIT=40
           SECONDS=$((MINWAIT+RANDOM % (MAXWAIT-MINWAIT)))
           echo "Sleeping for $SECONDS seconds"
           sleep $SECONDS
