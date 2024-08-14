@@ -1,6 +1,7 @@
 # Python `Hello world` Program
 
-![example workflow](https://github.com/izzkhairable/python-hello-world/actions/workflows/ci.yml/badge.svg?branch=main)
+![workflow status](https://github.com/izzkhairable/python-hello-world/actions/workflows/ci.yml/badge.svg?branch=main)
+![coverage status](https://raw.githubusercontent.com/izzkhairable/python-hello-world/python-coverage-comment-action-data/badge.svg)
 
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
@@ -36,6 +37,7 @@ coverage report -m --omit="*_test.py"
 ![img-002](assets/img-002.gif)
 
 #### View the published Docker Images on Docker Hub: [izzkhair/python-hello-world](https://hub.docker.com/repository/docker/izzkhair/python-hello-world/general)
+#### View the published Docker Images on GitHub Container Registry: [izzkhairable/python-hello-world](https://github.com/izzkhairable/python-hello-world/pkgs/container/python-hello-world)
 
 To ensure that the `Hello world` program is `backward compatible`, each new increment of the 
 `Hello world` python program would result in the publishing of 4 docker images for the 
@@ -70,24 +72,22 @@ docker run izzkhair/python-hello-world:main-$PYTHON_VERSION
 
 #### Optional: Build image and Run container in Local Machine
 ```shell
-docker build --no-cache --build-arg BASE_IMAGE_VERSION=3.12 -t python-hello-world-local .
+PYTHON_VERSION=3.12
+docker build --no-cache --build-arg BASE_IMAGE_VERSION=$PYTHON_VERSION -t python-hello-world-local .
 docker run python-hello-world-local
 ```
 
 ## GitHub Actions
 
 ![img-005](assets/img-005.png)
-![img-003](assets/img-003.png)
-![img-004](assets/img-004.png)
-
 
 #### View the GitHub Action Workflows and Jobs: [izzkhairable/python-hello-world/actions](https://github.com/izzkhairable/python-hello-world/actions)
 
 Currently, the GitHub Actions for this project is configured with a workflow `Build and publish python hello-world` and it
 contains two jobs: 
 
-- `python-build`: test, lint, build artifacts, run `hello world` program and upload the artifacts
-- `docker-publish`: builds and publish `hello world` image to docker hub, scans for vulnerability and run the image
+- `python-build`: test, producer coverage, lint, build artifacts, run `hello world` program and upload the artifacts
+- `docker-publish`: build, scan, run and publish `hello world` image to docker hub and github cr
 
 ```yaml
 name: Build and publish python hello-world
@@ -100,18 +100,23 @@ jobs:
       - Install dependencies
       - Lint with Ruff
       - Test with Coverage Unittest
+      - Publish Coverage Report to Summary
       - Run python program
       - Upload packaged python artifacts
   docker-publish:
     steps:
       - Download packaged python artifacts
+      - Set up QEMU
+      - Set up Docker Buildx
       - Authenticate to docker hub
-      - Authenticate to github container registry
+      - Authenticate to github cr
       - Extract tags and labels metadata
-      - Build docker image
-      - Scan container for vulnerabilities
-      - Run docker image
-      - Publish to github container registry and docker hub
+      - Build local docker image
+      - Run local docker image
+      - Run Trivy vulnerability scanner
+      - Publish Trivy Output to Summary
+      - Push docker image to docker hub and github cr
+      - Generate artifact attestation
 ```
 
 ## Dependencies
@@ -121,22 +126,25 @@ jobs:
 ```yaml
 inspirational-quotes
 pyfiglet
-wonderwords
 ruff
+wonderwords
 ```
 
 ### GitHub Actions
 
 ```yaml
+actions/attest-build-provenance
 actions/checkout
+actions/download-artifact
 actions/setup-python
 actions/upload-artifact
-actions/download-artifact
+aquasecurity/trivy-action
+docker/build-push-action
 docker/login-action
 docker/metadata-action
-docker/build-push-action
-crazy-max/ghaction-container-scan
-addnab/docker-run-action
+docker/setup-buildx-action
+docker/setup-qemu-action
+py-cov-action/python-coverage-comment-action
 ```
 
 ## Contributing
@@ -147,4 +155,4 @@ If you'd like to contribute, please fork the repository, create a PR or open an 
 
 * https://github.com/izzkhairable/python-hello-world/actions
 * https://hub.docker.com/repository/docker/izzkhair/python-hello-world/general
-
+* https://github.com/izzkhairable/python-hello-world/pkgs/container/python-hello-world
