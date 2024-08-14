@@ -20,11 +20,11 @@ jobs:
         python-version: ${{ fromJSON(vars.PYTHON_VERSIONS) }}
     steps:
 
-      - name: Add few seconds of latency
+      - name: Add seconds of latency
         shell: bash
         run: |
-          MINWAIT=5
-          MAXWAIT=30
+          MINWAIT=1
+          MAXWAIT=20
           sleep $((MINWAIT+RANDOM % (MAXWAIT-MINWAIT)))
 
       - name: Checkout to current branch
@@ -90,12 +90,12 @@ jobs:
         python-version: ${{ fromJSON(vars.PYTHON_VERSIONS) }}
     steps:
 
-      - name: Add few seconds of latency
+      - name: Add seconds of latency
         shell: bash
         run: |
-              MINWAIT=5
-              MAXWAIT=30
-              sleep $((MINWAIT+RANDOM % (MAXWAIT-MINWAIT)))
+          MINWAIT=1
+          MAXWAIT=20
+          sleep $((MINWAIT+RANDOM % (MAXWAIT-MINWAIT)))
 
       - name: Download packaged python artifacts
         uses: actions/download-artifact@v4
