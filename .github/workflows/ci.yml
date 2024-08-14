@@ -45,6 +45,14 @@ jobs:
           coverage run -m unittest discover -p '*_test.py'
           coverage report -m --omit="*_test.py"
           coverage xml --omit="*_test.py"
+          ls
+          pwd
+        continue-on-error: true
+
+      - name: Test with Coverage Unittest
+        run: |
+          ls
+          pwd
         continue-on-error: true
 
 #      - name: Get Cover
