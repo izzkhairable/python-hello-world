@@ -134,30 +134,13 @@ jobs:
           if [[ -s trivy.txt ]]; then
             {
               echo "<h2>Trivy Container Scan Report</h2>"
-              echo "<details><summary>${{ env.DH_REGISTRY_IMAGE_NAME }}-local Image</summary>"
+              echo "<h3>${{ env.DH_REGISTRY_IMAGE_NAME }}-local Image</h3>"
               echo ""
               echo '```'
               cat trivy.txt
               echo '```'
-              echo "</details>"
             } >> $GITHUB_STEP_SUMMARY
           fi
-
-#      - name: Scan image
-#        uses: anchore/scan-action@v3
-#        with:
-#          image: "localbuild/testimage:latest"
-
-#      - name: Scan container for vulnerabilities
-#        uses: crazy-max/ghaction-container-scan@v3
-#        with:
-#          image: izzkhair/python-hello-world:main-${{ matrix.python-version }}
-#
-#      - name: Run docker image
-#        uses: addnab/docker-run-action@v3
-#        with:
-#          image: izzkhair/python-hello-world:main-${{ matrix.python-version }}
-#          run: python ${{ env.FILEPATH_PYTHON_MAIN }}
 
       - name: Push docker image to docker hub and github cr
         id: push
