@@ -43,11 +43,17 @@ jobs:
           coverage xml --omit="*_test.py"
         continue-on-error: true
 
-      - name: Get Cover
-        uses: orgoro/coverage@v3.2
+#      - name: Get Cover
+#        uses: orgoro/coverage@v3.2
+#        with:
+#          coverageFile: ./coverage.xml
+#          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Coverage comment
+        id: coverage_comment
+        uses: py-cov-action/python-coverage-comment-action@v3
         with:
-          coverageFile: ./coverage.xml
-          token: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run python program
         run: |
