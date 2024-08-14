@@ -16,10 +16,21 @@ jobs:
       contents: write
       actions: read
     strategy:
-      max-parallel: 2
+      # To be activated in prod env
+      # max-parallel: 2
       matrix:
         python-version: ${{ fromJSON(vars.PYTHON_VERSIONS) }}
     steps:
+
+      # Meant for demo or dev env
+      - name: Add seconds of latency
+        shell: bash
+        run: |
+          MINWAIT=1
+          MAXWAIT=20
+          SECONDS=$((MINWAIT+RANDOM % (MAXWAIT-MINWAIT)))
+          echo "Sleeping for $SECONDS seconds"
+          sleep $SECONDS
 
       - name: Checkout to current branch
         uses: actions/checkout@v4
@@ -80,10 +91,21 @@ jobs:
     needs:
       - python-build
     strategy:
-      max-parallel: 2
+      # To be activated in prod
+      # max-parallel: 2
       matrix:
         python-version: ${{ fromJSON(vars.PYTHON_VERSIONS) }}
     steps:
+
+      # Meant for demo or dev env
+      - name: Add seconds of latency
+        shell: bash
+        run: |
+          MINWAIT=1
+          MAXWAIT=20
+          SECONDS=$((MINWAIT+RANDOM % (MAXWAIT-MINWAIT)))
+          echo "Sleeping for $SECONDS seconds"
+          sleep $SECONDS
 
       - name: Download packaged python artifacts
         uses: actions/download-artifact@v4
