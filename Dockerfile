@@ -10,3 +10,4 @@ WORKDIR /home/defaultuser/app
 COPY ./ .
 
 CMD [ "python", "src/main.py" ]
+
